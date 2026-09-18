@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-similar_items}
+      POSTGRES_USER: ${POSTGRES_USER:-similar_items}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+    ports:
+      - "${POSTGRES_PORT:-5435}:5432"
+    volumes:
+      - clever_similar_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      PORT: "8080"
+      DATABASE_URL: postgresql://${POSTGRES_USER:-similar_items}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-similar_items}?sslmode=disable
+      FEED_URL: ${FEED_URL:?Copy .env.example to .env and set FEED_URL}
+      FEED_SYNC_INTERVAL: ${FEED_SYNC_INTERVAL:-1h}
+      WARM_TIMEOUT: ${WARM_TIMEOUT:-30m}
+      WARM_WORKERS: ${WARM_WORKERS:-2}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  admin:
+    build:
+      context: ./admin
+      args:
+        REACT_APP_PRODUCT_SITE_ORIGIN: ${PRODUCT_SITE_ORIGIN:-https://shop.example.com}
+    ports:
+      - "${ADMIN_PORT:-3000}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  clever_similar_postgres:

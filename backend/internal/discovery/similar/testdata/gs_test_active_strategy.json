@@ -1,0 +1,568 @@
+{
+ "schema_version": 1,
+ "enabled": true,
+ "weights": {
+  "category_leaf": 90,
+  "category_shared_leaf": 70,
+  "category_parent": 50,
+  "category_branch": 25,
+  "color": 0,
+  "product_type": 0,
+  "gender_or_age_group": 0,
+  "fit_or_silhouette": 0,
+  "season_or_collection": 0,
+  "article_prefix": 5,
+  "price": 5,
+  "popularity_max": 0
+ },
+ "price": {
+  "range_percent": 10
+ },
+ "title": {
+  "enabled": true,
+  "max_score": 30,
+  "exact_score": 50,
+  "jaccard_max_score": 50,
+  "model_token_score": 20,
+  "model_max_score": 40,
+  "feature_token_score": 15,
+  "feature_max_score": 30,
+  "no_category_cap": 10,
+  "min_token_length": 1,
+  "stopwords": [
+   "clever",
+   "товар",
+   "арт",
+   "для",
+   "из",
+   "с",
+   "в",
+   "со"
+  ],
+  "model_words": [
+   "wide",
+   "straight",
+   "slim",
+   "skinny",
+   "mom",
+   "cargo",
+   "oversize",
+   "basic",
+   "flare",
+   "regular",
+   "relaxed",
+   "baggy",
+   "палаццо",
+   "клеш",
+   "клёш",
+   "карго",
+   "оверсайз",
+   "базовый",
+   "базовая",
+   "прямой",
+   "прямая",
+   "широкий",
+   "широкая",
+   "широкой",
+   "зауженный",
+   "зауженная",
+   "супероверсайз",
+   "трапеция",
+   "слитный",
+   "раздельный",
+   "спортивный",
+   "спортивная",
+   "укороченная",
+   "укороченный",
+   "бермуды",
+   "расклёшенными"
+  ],
+  "feature_words": [
+   "принт",
+   "принтом",
+   "принтами",
+   "лампас",
+   "лампасы",
+   "лампасами",
+   "завязки",
+   "завязками",
+   "завязок",
+   "защипами",
+   "запахом",
+   "рубчик",
+   "рубчика",
+   "вышивка",
+   "вышивкой",
+   "капюшон",
+   "капюшоном",
+   "полоска",
+   "полоски",
+   "полосками",
+   "полоску",
+   "полосатый",
+   "полосатые",
+   "страз",
+   "стразами",
+   "блестки",
+   "блестками",
+   "аппликация",
+   "аппликацией",
+   "разрезами",
+   "разрезом",
+   "кружевом",
+   "кружево",
+   "кружевными",
+   "подворотами",
+   "подворотом",
+   "перфорация",
+   "перфорацией",
+   "противоскользящими",
+   "противоскользящие",
+   "hello",
+   "kitty",
+   "kuromi",
+   "варкой",
+   "варка",
+   "градиентом",
+   "горошек",
+   "горох",
+   "бусинами",
+   "бусины",
+   "скубы",
+   "скубой",
+   "рваным",
+   "бахромой",
+   "клетку",
+   "клетчатая",
+   "клетчатый"
+  ],
+  "synonym_token_score": 15,
+  "synonym_max_score": 60,
+  "synonym_groups": [
+   {
+    "id": "outerwear_light",
+    "words": ["ветровка", "куртка", "бомбер"]
+   },
+   {
+    "id": "fit_loose",
+    "words": ["свободные", "широкие", "широкий"]
+   },
+   {
+    "id": "jacket_blazer",
+    "words": ["жакет", "пиджак"]
+   },
+   {
+    "id": "kuromi",
+    "words": ["kuromi", "kitty"]
+   }
+  ],
+  "ignore_modifier_words_enabled": true
+ },
+ "thresholds": {
+  "strict": {
+   "score_min": 80,
+   "base_without_title_min": 50,
+   "strategy": "same_category_color_then_parent_fallback"
+  },
+  "parent": {
+   "score_min": 50,
+   "base_without_title_min": 25,
+   "strategy": "parent_category_fallback"
+  },
+  "branch": {
+   "score_min": 25,
+   "strategy": "branch_fallback"
+  },
+  "popular": {
+   "enabled": true,
+   "strategy": "popular_in_section"
+  }
+ },
+ "attribute_rules": [
+  {
+   "id": "color_similarity",
+   "enabled": true,
+   "label_ru": "Цвет (семейства)",
+   "source": "column",
+   "key": "color",
+   "match_type": "color_similarity",
+   "weight": 30,
+   "max_score": 30,
+   "missing_policy": "no_score",
+   "color": {
+    "raw_exact_score": 30,
+    "primary_exact_score": 24,
+    "alias_exact_score": 22,
+    "family_score": 18,
+    "shade_overlap_score": 6,
+    "conflict_penalty": -20,
+    "gate_on_conflict": null
+   }
+  },
+  {
+   "id": "fit_waist",
+   "enabled": true,
+   "label_ru": "Высота талии",
+   "source": "attributes",
+   "key": "Высота талии",
+   "match_type": "exact",
+   "weight": 15,
+   "max_score": 15,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjtifh",
+   "enabled": true,
+   "label_ru": "Застёжка",
+   "source": "attributes",
+   "key": "Застёжка",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjtimv",
+   "enabled": true,
+   "label_ru": "Конструктивные элементы",
+   "source": "attributes",
+   "key": "Конструктивные элементы",
+   "match_type": "exact",
+   "weight": 5,
+   "max_score": 5,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjtiyw",
+   "enabled": true,
+   "label_ru": "Длина рукава",
+   "source": "attributes",
+   "key": "Длина рукава",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjtj4w",
+   "enabled": true,
+   "label_ru": "Силуэт",
+   "source": "attributes",
+   "key": "Силуэт",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjuqu4",
+   "enabled": true,
+   "label_ru": "Тип посадки",
+   "source": "attributes",
+   "key": "Тип посадки",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjuqzn",
+   "enabled": true,
+   "label_ru": "Высота носка",
+   "source": "attributes",
+   "key": "Высота носка",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjur57",
+   "enabled": true,
+   "label_ru": "Вид бретелей",
+   "source": "attributes",
+   "key": "Вид бретелей",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjur9t",
+   "enabled": true,
+   "label_ru": "Длина юбки",
+   "source": "attributes",
+   "key": "Длина юбки",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjurex",
+   "enabled": true,
+   "label_ru": "Тип трусов",
+   "source": "attributes",
+   "key": "Тип трусов",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjurki",
+   "enabled": true,
+   "label_ru": "Тип юбки",
+   "source": "attributes",
+   "key": "Тип юбки",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjurq2",
+   "enabled": true,
+   "label_ru": "Тип головного убора",
+   "source": "attributes",
+   "key": "Тип головного убора",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjwcex",
+   "enabled": true,
+   "label_ru": "Тип купальника",
+   "source": "attributes",
+   "key": "Тип купальника",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjwcjv",
+   "enabled": true,
+   "label_ru": "Тип чашки",
+   "source": "attributes",
+   "key": "Тип чашки",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvjwcph",
+   "enabled": true,
+   "label_ru": "Тип бюстгальтера",
+   "source": "attributes",
+   "key": "Тип бюстгальтера",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "gender",
+   "enabled": true,
+   "label_ru": "Пол",
+   "source": "column",
+   "key": "gender",
+   "match_type": "exact",
+   "weight": 20,
+   "max_score": 20,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "decor",
+   "enabled": true,
+   "label_ru": "Декор (набор)",
+   "source": "attributes",
+   "key": "_decor_set",
+   "match_type": "set_overlap",
+   "weight": 12,
+   "max_score": 12,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "pattern",
+   "enabled": true,
+   "label_ru": "Узор (набор)",
+   "source": "attributes",
+   "key": "_pattern_set",
+   "match_type": "set_overlap",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "material",
+   "enabled": true,
+   "label_ru": "Материал (набор)",
+   "source": "attributes",
+   "key": "_material_set",
+   "match_type": "set_overlap",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "fabric_type",
+   "enabled": true,
+   "label_ru": "Тип ткани (набор)",
+   "source": "attributes",
+   "key": "_fabric_type_set",
+   "match_type": "set_overlap",
+   "weight": 8,
+   "max_score": 8,
+   "missing_policy": "no_score"
+  },
+  {
+   "id": "rule_mpvqn2ky",
+   "enabled": true,
+   "label_ru": "Возраст",
+   "source": "attributes",
+   "key": "Возраст",
+   "match_type": "exact",
+   "weight": 10,
+   "max_score": 10,
+   "missing_policy": "no_score"
+  }
+ ],
+ "color_family_dictionary": {
+  "beige": [
+   "бежевый",
+   "кремовый",
+   "песочный",
+   "beige",
+   "нюдовый",
+   "телесный",
+   "карамельный",
+   "капучино",
+   "латте",
+   "миндальный",
+   "овсяный",
+   "бежевый меланж"
+  ],
+  "black": [
+   "черный",
+   "чёрный",
+   "black",
+   "графитовый",
+   "угольный",
+   "антрацитовый",
+   "смоляной",
+   "чернильный",
+   "ониксовый"
+  ],
+  "blue": [
+   "синий",
+   "голубой",
+   "деним",
+   "индиго",
+   "navy",
+   "blue",
+   "темно-синий",
+   "тёмно-синий",
+   "морской",
+   "индиго",
+   "васильковый",
+   "кобальтовый",
+   "сапфировый",
+   "ультрамарин"
+  ],
+  "brown": [
+   "коричневый",
+   "шоколадный",
+   "brown",
+   "шоколадный",
+   "кофейный",
+   "какао",
+   "ореховый",
+   "каштановый",
+   "карамельный",
+   "коньячный",
+   "табачный",
+   "мокко",
+   "терракотовый",
+   "бронзовый"
+  ],
+  "gray": [
+   "серый",
+   "графит",
+   "меланж",
+   "gray",
+   "grey",
+   "светло-серый",
+   "темно-серый",
+   "тёмно-серый",
+   "дымчатый",
+   "пепельный",
+   "серебристый",
+   "меланжевый"
+  ],
+  "green": [
+   "зеленый",
+   "зелёный",
+   "хаки",
+   "оливковый",
+   "green"
+  ],
+  "orange": [
+   "оранжевый",
+   "orange"
+  ],
+  "pink": [
+   "розовый",
+   "фуксия",
+   "pink"
+  ],
+  "purple": [
+   "фиолетовый",
+   "сиреневый",
+   "лиловый",
+   "purple"
+  ],
+  "red": [
+   "красный",
+   "бордовый",
+   "red"
+  ],
+  "white": [
+   "белый",
+   "молочный",
+   "айвори",
+   "ivory",
+   "white"
+  ],
+  "yellow": [
+   "желтый",
+   "жёлтый",
+   "yellow"
+  ]
+ },
+ "color_family_palette": {
+  "beige": "#D8C3A5",
+  "black": "#1F1F1F",
+  "blue": "#2F5DA8",
+  "brown": "#7A4A2E",
+  "gray": "#9CA3AF",
+  "green": "#6B7F3A",
+  "orange": "#E9852C",
+  "pink": "#E78AA9",
+  "purple": "#8B5FBF",
+  "red": "#C62828",
+  "white": "#F7F4ED",
+  "yellow": "#F2C94C"
+ },
+ "search_synonyms": null,
+ "search": {
+  "popularity_weight": 0,
+  "pins": null,
+  "boosts": null,
+  "product_type_dictionary": null
+ },
+ "updated_reason": "builtin default 0206"
+}

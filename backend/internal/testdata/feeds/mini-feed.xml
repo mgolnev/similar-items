@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-09-18 10:00">
+  <shop>
+    <name>Example Store</name>
+    <company>Example Store</company>
+    <url>https://shop.example.com</url>
+    <currencies>
+      <currency id="RUR" rate="1"></currency>
+    </currencies>
+    <categories>
+      <category id="1">Каталог</category>
+      <category id="2" parentId="1">Женщины</category>
+      <category id="3" parentId="2">Топы</category>
+    </categories>
+    <offers>
+      <offer id="CLV-TOP-001-M" group_id="CLV-TOP-001" available="true">
+        <url>https://shop.example.com/product/CLV-TOP-001</url>
+        <price>1999</price>
+        <categoryId>3</categoryId>
+        <currencyId>RUR</currencyId>
+        <vendor>Clever</vendor>
+        <name>Бежевый женский топ</name>
+        <typePrefix>Топ</typePrefix>
+        <vendorCode>CLV-TOP-001</vendorCode>
+        <param name="Пол">Женщины</param>
+        <param name="Размер" unit="RU">M</param>
+        <param name="Цвет">бежевый</param>
+        <param name="Сочетается с товаром">CLV-SKIRT-001</param>
+        <param name="Категория текст" id="3">Топы</param>
+        <param name="StoreStock">10</param>
+        <param name="WarehouseStock">5</param>
+        <picture>https://cdn.example.com/CLV-TOP-001.jpg</picture>
+      </offer>
+      <offer id="CLV-TOP-002-M" group_id="CLV-TOP-002" available="true">
+        <url>https://shop.example.com/product/CLV-TOP-002</url>
+        <price>2499</price>
+        <categoryId>3</categoryId>
+        <currencyId>RUR</currencyId>
+        <vendor>Clever</vendor>
+        <name>Чёрный женский топ</name>
+        <typePrefix>Топ</typePrefix>
+        <vendorCode>CLV-TOP-002</vendorCode>
+        <param name="Пол">Женщины</param>
+        <param name="Размер" unit="RU">M</param>
+        <param name="Цвет">чёрный</param>
+        <param name="Сочетается с товаром">CLV-PANTS-001</param>
+        <param name="Категория текст" id="3">Топы</param>
+        <param name="StoreStock">8</param>
+        <param name="WarehouseStock">4</param>
+        <picture>https://cdn.example.com/CLV-TOP-002.jpg</picture>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

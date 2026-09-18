@@ -1,0 +1,23 @@
+# Локальный стенд админки. Образ = nginx + статика; nginx проксирует /api/* на
+# сервис `backend` в общей сети clever-similar (см. nginx.conf).
+#
+# Требует поднятого backend в той же сети.
+# Порядок запуска:
+#   docker network create clever-similar           # один раз
+#   (в backend/) docker compose up -d               # движок + postgres
+#   (здесь)                   docker compose up -d  # админка
+#
+# Если поднять GUI раньше движка, nginx упадёт с "host not found in upstream"
+# и будет перезапускаться (restart: unless-stopped), пока движок не появится в сети.
+services:
+  gui:
+    build: .
+    ports:
+      - "${GUI_PORT:-8091}:80"
+    restart: unless-stopped
+    networks:
+      - clever-similar
+
+networks:
+  clever-similar:
+    external: true

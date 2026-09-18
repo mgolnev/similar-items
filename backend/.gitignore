@@ -1,0 +1,55 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+/similar-items
+/main
+
+# Go
+go.work
+build/
+tmp/
+vendor/
+coverage.out
+coverage.html
+
+# Logs
+*.log
+build-errors.log
+
+# IDE/editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.production
+
+# Database / dumps
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.xlsx
+*.xls
+
+# Uploads / feed artifacts
+uploads/
+auto-merch-feed-sku-central.xml
+
+# Frontend вынесен в отдельный репо (prod: recomendationenginegui)
+frontend/

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-06-01 19:07">
+  <shop>
+    <name>Example Store</name>
+    <categories>
+      <category id="5">Каталог</category>
+      <category id="900" parentId="5">Мужская одежда</category>
+      <category id="2740" parentId="900">Футболки для парней</category>
+    </categories>
+    <offers>
+      <offer id="BAC013491-1" group_id="BAC013491" available="true">
+        <url>https://shop.example.com/product/BAC013491-1</url>
+        <price>299</price>
+        <oldprice>999</oldprice>
+        <categoryId>2740</categoryId>
+        <currencyId>RUR</currencyId>
+        <name>Красная футболка</name>
+        <typePrefix>Футболка</typePrefix>
+        <vendorCode>BAC013491</vendorCode>
+        <param name="Пол">Мужчины</param>
+        <param name="Цвет">красный</param>
+        <param name="Размер товара на модели">182</param>
+        <param name="ВыбитостьРазмеровПроцент">10%</param>
+        <param name="StoreStock">5</param>
+        <param name="WarehouseStock">7</param>
+        <picture>https://example/1.jpg</picture>
+      </offer>
+      <offer id="BAC013491-2" group_id="BAC013491" available="true">
+        <url>https://shop.example.com/product/BAC013491-2</url>
+        <price>299</price>
+        <oldprice>999</oldprice>
+        <categoryId>2740</categoryId>
+        <currencyId>RUR</currencyId>
+        <name>Синяя футболка</name>
+        <typePrefix>Футболка</typePrefix>
+        <vendorCode>BAC013491</vendorCode>
+        <param name="Пол">Мужчины</param>
+        <param name="Цвет">синий</param>
+        <param name="Размер товара на модели">182</param>
+        <param name="ВыбитостьРазмеровПроцент">0%</param>
+        <param name="StoreStock">3</param>
+        <param name="WarehouseStock">2</param>
+        <picture>https://example/2.jpg</picture>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

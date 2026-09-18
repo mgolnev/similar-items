@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+backend/tmp/
+backend/build/
+admin/node_modules/
+admin/build/
